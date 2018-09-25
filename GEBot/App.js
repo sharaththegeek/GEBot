@@ -7,7 +7,7 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, Button, TextInput} from 'react-native';
+import {Platform, StyleSheet, Text, View, StatusBar, Button, TextInput} from 'react-native';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -18,7 +18,9 @@ const instructions = Platform.select({
 
 type Props = {};
 export default class App extends Component<Props> {
-  render() {
+  render() 
+  {
+    StatusBar.setBarStyle('light-content',true)
     return (
       <View style={styles.container}>
         <View style={styles.header}>
@@ -26,7 +28,13 @@ export default class App extends Component<Props> {
         <Text style={styles.bot}>Bot
         </Text>
         </Text>
-        <View style={styles.body}></View>
+        </View>
+        <View style={styles.body}>
+        <TextInput
+          style={{height: 30,width:300}}
+          placeholder="Say 'hello' to start..."
+          onChangeText={(text) => this.setState({text})}
+        />
         </View>
 </View>
     );
@@ -36,25 +44,26 @@ export default class App extends Component<Props> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#EFF7FF',
   },
   header: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    backgroundColor:'#0FAAFF',
+    flex: 2,
+    justifyContent:'flex-end',
   },
   title: {
-    
+    textAlign:'center',
+    fontSize: 46,
+    color:'white',
     fontFamily: 'Trebuchet MS',
   },
   bot: {
-    
+    fontSize: 20,
     fontFamily: 'Trebuchet MS',
 
   },
   body:{
-    flex:4,
+    justifyContent:'flex-end',
+    flex:16,
   }
 });
